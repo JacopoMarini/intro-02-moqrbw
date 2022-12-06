@@ -6,11 +6,9 @@ const registerButton = document.getElementById('register-button');
 
 //Creo il titolo della pagina
 const mainTitle = document.createElement('h1');
-mainTitle.textContent = config.title;
+mainTitle.textContent = 'Hello!';
 const divEl = document.querySelector('.r-title');
 divEl.appendChild(mainTitle);
-
-//Funzione per creare input
 
 registerButton.onclick = function onSubmit() {
   alert('prova');
