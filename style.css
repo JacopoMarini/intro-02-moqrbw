@@ -116,6 +116,12 @@
   border: none;
   border-radius: 20px;
   color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  -webkit-box-shadow: var(--shadow);
+  box-shadow: var(--shadow);
 }
 
 section {
@@ -130,4 +136,9 @@ section {
 .wrapper,
 .p-wrapper {
   padding: 0.5rem;
+}
+
+input {
+  border: 1px solid var(--color1);
+  outline: none;
 }
