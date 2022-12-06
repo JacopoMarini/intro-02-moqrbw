@@ -1,0 +1,133 @@
+/* ----- COLORS ----- */
+:root {
+  --color1: #f0287c;
+  --color2: #f5963d;
+  --text-dark: #1b1b1e;
+  --text-light: #f6f7fc;
+  --background: #e8ebf7;
+  --error: #e61414;
+  --shadow: 240, 40, 120;
+}
+/* ----- RESET RULES ----- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+#app {
+  background-color: var(--background);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 600px;
+  width: 1024px;
+  margin: 0 auto;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  border: none;
+}
+
+/* -----  FLEX COLUMN ----- */
+.c-flex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.d-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ----- LEFT CARD RULES ----- */
+.l-card {
+  background-image: linear-gradient(180deg, var(--color1), var(--color2));
+  flex: 1;
+  color: white;
+  padding: 64px;
+  border-bottom-left-radius: 64px;
+}
+
+.l-card h1 {
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+.l-card p {
+  font-weight: 500;
+  text-align: justify;
+}
+
+.l-card__wrapper {
+  margin-top: 50%;
+}
+
+/* ----- LEFT & RIGHT COMMON RULES----- */
+.r-card,
+.l-card {
+  height: 100%;
+}
+
+/* ----- RIGHT CARD RULES ----- */
+
+.r-card {
+  background-color: white;
+  padding: 64px;
+  border-top-right-radius: 64px;
+  flex: 1.5;
+  overflow-y: auto;
+}
+.form-section,
+.check-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  gap: 0.5rem;
+}
+
+.form-section > input {
+  width: 100%;
+  border-radius: 20px;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+#register-button {
+  background-image: linear-gradient(to right, var(--color1), var(--color2));
+  padding: 0.75rem 3rem;
+  border: none;
+  border-radius: 20px;
+  color: white;
+}
+
+section {
+  margin-top: 64px;
+  margin-bottom: 64px;
+}
+
+.personal-section {
+  padding-bottom: 1rem;
+}
+
+.wrapper,
+.p-wrapper {
+  padding: 0.5rem;
+}
