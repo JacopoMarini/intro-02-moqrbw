@@ -6,8 +6,10 @@ const formNode = document.getElementById('dynamic-form');
 
 const registerButton = document.getElementById('register-button');
 
+let total = 0;
+
 const { title, description, field } = config;
-const { label, id, type, section } = fieldsMap;
+const { label, id, type, section, text, product } = fieldsMap;
 
 //Creo il titolo della pagina
 const mainTitle = document.createElement('h1');
@@ -16,8 +18,17 @@ const divEl = document.querySelector('.r-title');
 divEl.appendChild(mainTitle);
 // -------------------------- //
 
-const x = section(config);
+const prova1 = section(config);
+
+const prova2 = text(config);
+
+const prova3 = product(config);
 
 registerButton.onclick = function onSubmit() {
-  alert('prova');
+  alert(`
+  name: (input1 value)
+  surname: (input2 value)
+  email: (input3 value)
+  address: (input4 value)
+  Total order: ${total}`);
 };
