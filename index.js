@@ -11,13 +11,6 @@ let total = 0;
 const { title, description, field } = config;
 const { label, id, type, section, text, product } = fieldsMap;
 
-//Creo il titolo della pagina
-const mainTitle = document.createElement('h1');
-mainTitle.textContent = 'Hello!';
-const divEl = document.querySelector('.r-title');
-divEl.appendChild(mainTitle);
-// -------------------------- //
-
 const prova1 = section(config);
 
 const prova2 = text(config);
