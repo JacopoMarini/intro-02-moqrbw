@@ -12,14 +12,19 @@ const createTextField = (textField, onChange) => {
   const inputTitle = document.createElement('p');
   const inputElement = document.createElement('INPUT');
   inputTitle.textContent = textField.label;
-  inputElement.setAttribute(textField.type, textField.id);
+  console.log(textField);
+  inputElement.setAttribute('id', textField.id);
   return [inputTitle, inputElement];
 };
 
 const createProductField = (product, onClick) => {
   const checkElement = document.createElement('INPUT');
   checkElement.setAttribute('type', 'checkbox');
-  return [checkElement];
+  const productTitle = document.createElement('p');
+  const productPrice = document.createElement('p');
+  productTitle.textContent = product.title;
+  productPrice.textContent = '€' + product.price.toFixed(2);
+  return [checkElement, productPrice, productTitle];
 };
 
 export const fieldsMap = {
