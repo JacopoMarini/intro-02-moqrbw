@@ -19,6 +19,7 @@ const createTextField = (textField, onChange) => {
 
 const createProductField = (product, onClick) => {
   const checkElement = document.createElement('INPUT');
+  checkElement.setAttribute('id', product.id);
   checkElement.setAttribute('type', 'checkbox');
   const productTitle = document.createElement('p');
   const productPrice = document.createElement('p');

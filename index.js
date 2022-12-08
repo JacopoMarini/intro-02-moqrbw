@@ -32,19 +32,28 @@ const validate = (value, rule) => {
 
   if (rule.min && (!value || value.lenght < rule.min)) return false;
 
-  if (rule.includes && (!value || !value.includes(value.includes)))
-    return false;
+  if (rule.includes && (!value || !value.includes(rule.includes))) return false;
 
   return true;
 };
 
 registerButton.onclick = function onSubmit(event) {
-  console.log(event);
   const name = document.getElementById('name').value;
   const surname = document.getElementById('surname').value;
   const email = document.getElementById('email').value;
   const address = document.getElementById('address').value;
   const fields = { name, surname, email, address };
+
+  const checkboxes = document.querySelectorAll(
+    'input[type="checkbox"]:checked'
+  );
+  console.log(checkboxes);
+  const total = Array.from(checkboxes).reduce((acc, el) => {
+    const productId = el.id;
+    const product = products.find((p) => p.id == productId);
+    return acc + product.price;
+  }, 0);
+
   for (const validationRule of validationRules) {
     const isValid = validate(fields[validationRule[0]], validationRule[1]);
     if (!isValid) {
@@ -58,5 +67,5 @@ registerButton.onclick = function onSubmit(event) {
   surname: ${surname}
   email: ${email}
   address: ${address}
-  Total order: `);
+  Total order: ${total.toFixed(2)}`);
 };
