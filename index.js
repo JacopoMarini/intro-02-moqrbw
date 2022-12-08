@@ -8,14 +8,20 @@ const registerButton = document.getElementById('register-button');
 
 let total = 0;
 
-const { title, description, field } = config;
-const { label, id, type, section, text, product } = fieldsMap;
+for (const element of config) {
+  const { title, description, field } = element;
+  const { label, id, type, section, text, product } = fieldsMap;
 
-const prova1 = section(config);
+  const prova1 = section(element).forEach((el) => formNode.append(el));
 
-const prova2 = text(config);
+  const prova2 = text(element.fields.filter((el) => el.type == 'text')).forEach(
+    (el) => formNode.append(el)
+  );
 
-const prova3 = product(config);
+  const prova3 = product(
+    element.fields.filter((el) => el.type == 'product')
+  ).forEach((el) => formNode.append(el));
+}
 
 registerButton.onclick = function onSubmit() {
   alert(`
