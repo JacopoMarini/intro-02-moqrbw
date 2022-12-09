@@ -42,7 +42,12 @@ registerButton.onclick = function onSubmit(event) {
   const surname = document.getElementById('surname').value;
   const email = document.getElementById('email').value;
   const address = document.getElementById('address').value;
-  const fields = { name, surname, email, address };
+  const fields = {
+    name,
+    surname,
+    email,
+    address,
+  };
 
   const checkboxes = document.querySelectorAll(
     'input[type="checkbox"]:checked'
