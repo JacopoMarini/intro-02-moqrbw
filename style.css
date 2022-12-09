@@ -88,27 +88,6 @@
   flex: 1.5;
   overflow-y: auto;
 }
-.form-section,
-.check-section {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  width: 100%;
-  gap: 0.5rem;
-}
-
-.form-section > input {
-  width: 100%;
-  border-radius: 20px;
-}
-
-.wrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-}
 
 #register-button {
   background-image: linear-gradient(to right, var(--color1), var(--color2));
@@ -119,28 +98,17 @@
   cursor: pointer;
 }
 
-button:hover {
-  -webkit-box-shadow: var(--shadow);
-  box-shadow: var(--shadow);
-}
-
-section {
-  margin-top: 64px;
-  margin-bottom: 64px;
-}
-
-.header-section {
-  padding-bottom: 1rem;
-}
-
-.wrapper,
-.p-wrapper {
-  padding: 0.5rem;
-}
-
 input {
   border: 1px solid var(--color1);
   outline: none;
   width: 100%;
   border-radius: 10px;
+}
+
+#dynamic-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 64px;
+  margin-bottom: 64px;
 }

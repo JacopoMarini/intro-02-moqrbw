@@ -10,7 +10,7 @@ for (const element of config) {
   const { title, description, field } = element;
   const { label, id, type, section, text, product } = fieldsMap;
 
-  const prova1 = section(element).forEach((el) => formNode.append(el));
+  const creation = section(element).forEach((el) => formNode.append(el));
 
   const textFields = element.fields.filter((el) => el.type == 'text');
   for (const textField of textFields) {
@@ -20,8 +20,11 @@ for (const element of config) {
   const productFields = element.fields.filter((el) => el.type == 'product');
 
   for (const productField of productFields) {
+    const flexDiv = document.createElement('div');
+    flexDiv.classList.add('d-flex');
+    formNode.append(flexDiv);
     const productInfo = products.find((p) => p.id == productField.id);
-    product(productInfo).forEach((el) => formNode.append(el));
+    product(productInfo).forEach((el) => flexDiv.append(el));
   }
 }
 

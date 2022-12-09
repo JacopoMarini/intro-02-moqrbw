@@ -25,7 +25,7 @@ const createProductField = (product, onClick) => {
   const productPrice = document.createElement('p');
   productTitle.textContent = product.title;
   productPrice.textContent = '€' + product.price.toFixed(2);
-  return [checkElement, productPrice, productTitle];
+  return [productTitle, checkElement, productPrice];
 };
 
 export const fieldsMap = {
