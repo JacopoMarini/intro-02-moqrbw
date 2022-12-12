@@ -55,6 +55,7 @@ registerButton.onclick = function onSubmit() {
   const validate = (value, rule) => {
     console.log('value', value , "rule ", rule)
    if (!rule) return true;
+   
    if (rule.required && !value)  return false;
   
    if (rule.min && (!value || value.length < rule.min)) return false;
