@@ -18,13 +18,13 @@ function onTextChange(id, value) {
   formData[id] = value;
 }
 
-console.log(products, formData.products)
-
 function onProductChange(product){
-  const index = formData.products.find(p => p.id == product.id)
+  console.log(product, formData)
+  const index = formData.products.findIndex(p => p == product)
   if (index > -1) formData.products.splice(index, 1)
   else formData.products.push(product)
 }
+
 
 for (const element of config) {
   const { title, description, field } = element;
@@ -47,9 +47,9 @@ for (const element of config) {
 
 registerButton.onclick = function onSubmit() {
   const total = formData.products.reduce((acc, el) => {
-    const productId = el.id;
+    const productId = el;
     const product = products.find((p) => p.id == productId);
-    return acc + formData.products.price;
+    return acc + product.price;
   }, 0); 
   
   const validate = (value, rule) => {
@@ -57,7 +57,7 @@ registerButton.onclick = function onSubmit() {
    if (!rule) return true;
    if (rule.required && !value)  return false;
   
-   if (rule.min && (!value || value.lenght < rule.min)) return false;
+   if (rule.min && (!value || value.length < rule.min)) return false;
   
    if (rule.includes && (!value || !value.includes(rule.includes)))
      return false;
