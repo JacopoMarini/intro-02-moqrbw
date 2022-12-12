@@ -29,7 +29,7 @@ const createProductField = (product, onProductChange) => {
   productTitle.textContent = product.title;
   productPrice.textContent = '€' + product.price.toFixed(2);
   checkElement.onchange = (e) => {
-    onProductChange(checkElement, e.target.checked);
+    onProductChange(product.id, e.target.value);
   };
   return [productTitle, checkElement, productPrice];
 };
