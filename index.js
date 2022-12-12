@@ -19,7 +19,6 @@ function onTextChange(id, value) {
 }
 
 function onProductChange(product){
-  console.log(product, formData)
   const index = formData.products.findIndex(p => p == product)
   if (index > -1) formData.products.splice(index, 1)
   else formData.products.push(product)
@@ -53,9 +52,8 @@ registerButton.onclick = function onSubmit() {
   }, 0); 
   
   const validate = (value, rule) => {
-    console.log('value', value , "rule ", rule)
    if (!rule) return true;
-   
+
    if (rule.required && !value)  return false;
   
    if (rule.min && (!value || value.length < rule.min)) return false;
