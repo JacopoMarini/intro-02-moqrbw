@@ -20,9 +20,7 @@ function onTextChange(id, value) {
 }
 
 function onProductChange(product){
-  if(!formData.products.find(el => el.id == formData.products.id)){
-    return formData.products.filter(item => item.id != el.id)
-  }
+  if(formData.products.find(p => p.id == formData.products.id)) return formData.products.filter(el => el.id != p.id)
   return [formData.products, product]
 }
 
@@ -58,21 +56,22 @@ for (const element of config) {
   return true;
 }; */
 
-registerButton.onclick = function onSubmit() {
 
-    const total = Array.from(formData.products).reduce((acc, el) => {
-    const productId = el.id;
-    const product = products.find((p) => p.id == productId);
-    return acc + product.price;
-  }, 0); 
 
-  /*   for (const validationRule of validationRules) {
-    const isValid = validate(formData[validationRule[0]], validationRule[1]);
-    if (!isValid) {
-      alert(`Il campo ${validationRule[0]} è invalido`);
-      return;
-    }
-  } */
+/*   for (const validationRule of validationRules) {
+  const isValid = validate(formData[validationRule[0]], validationRule[1]);
+  if (!isValid) {
+    alert(`Il campo ${validationRule[0]} è invalido`);
+    return;
+  }
+} */
+
+  registerButton.onclick = function onSubmit() {
+      const total = formData.products.reduce((acc, el) => {
+      const productId = el.id;
+      const product = products.find((p) => p.id == productId);
+      return acc + product.price;
+    }, 0); 
 
   alert(`
   name: ${formData.name}
