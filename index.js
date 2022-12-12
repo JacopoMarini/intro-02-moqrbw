@@ -16,12 +16,11 @@ const formData = {
 
 function onTextChange(id, value) {
   formData[id] = value;
-  console.log(formData);
 }
 
 function onProductChange(product){
   if(formData.products.find(p => p.id == formData.products.id)) return formData.products.filter(el => el.id != p.id)
-  return [formData.products, product]
+  return formData.products.push(product)
 }
 
 for (const element of config) {
@@ -43,36 +42,34 @@ for (const element of config) {
   }
 }
 
-/* const validate = (value, rule) => {
-  if (!rule) return true;
-
-  if (rule.required && !value) return false;
-
-  if (rule.min && (!values || value.lenght < rule.min)) return false;
-
-  if (rule.includes && (!value || !value.includes(rule.includes)))
-    return false;
-
-  return true;
-}; */
-
-
-
-/*   for (const validationRule of validationRules) {
-  const isValid = validate(formData[validationRule[0]], validationRule[1]);
-  if (!isValid) {
-    alert(`Il campo ${validationRule[0]} è invalido`);
-    return;
-  }
-} */
-
-  registerButton.onclick = function onSubmit() {
-      const total = formData.products.reduce((acc, el) => {
-      const productId = el.id;
-      const product = products.find((p) => p.id == productId);
-      return acc + product.price;
-    }, 0); 
-
+registerButton.onclick = function onSubmit() {
+  const total = formData.products.reduce((acc, el) => {
+    const productId = el.id;
+    const product = products.find((p) => p.id == productId);
+    return acc + product.price;
+  }, 0); 
+  
+  const validate = (value, rule) => {
+   if (!rule) return true;
+  
+   if (rule.required && !value) return false;
+  
+   if (rule.min && (!value || value.lenght < rule.min)) return false;
+  
+   if (rule.includes && (!value || !value.includes(rule.includes)))
+     return false;
+  
+   return true;
+  }; 
+  
+   for (const validationRule of validationRules) {
+   const isValid = validate(formData[validationRule[0]], validationRule[1]);
+   if (!isValid) {
+     alert(`Il campo ${validationRule[0]} è invalido`);
+     return;
+   }
+  } 
+  
   alert(`
   name: ${formData.name}
   surname: ${formData.surname}

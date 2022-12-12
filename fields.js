@@ -28,9 +28,9 @@ const createProductField = (product, onProductChange) => {
   const productPrice = document.createElement('p');
   productTitle.textContent = product.title;
   productPrice.textContent = '€' + product.price.toFixed(2);
-  checkElement.onchange = (e) => {
-    onProductChange(checkElement.id, e.target.value);
-  };
+  checkElement.onchange = e => {
+    onProductChange(checkElement, e.target.value)
+  }
   return [productTitle, checkElement, productPrice];
 };
 
