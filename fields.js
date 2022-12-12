@@ -1,6 +1,8 @@
 const createSection = (section) => {
+  const sectionEl = document.createElement('section');
   const titleEl = document.createElement('h3');
   const paragEl = document.createElement('p');
+  sectionEl.append(titleEl, paragEl);
   titleEl.textContent = section.title;
   paragEl.textContent = section.description;
 

@@ -6,6 +6,17 @@ const formNode = document.getElementById('dynamic-form');
 
 const registerButton = document.getElementById('register-button');
 
+const formData = {
+  name: '',
+  surname: '',
+  email: '',
+  address: '',
+};
+
+const onChange = (id, value) => {
+  formData[id] = value;
+};
+
 for (const element of config) {
   const { title, description, field } = element;
   const { label, id, type, section, text, product } = fieldsMap;
@@ -20,11 +31,8 @@ for (const element of config) {
   const productFields = element.fields.filter((el) => el.type == 'product');
 
   for (const productField of productFields) {
-    const flexDiv = document.createElement('div');
-    flexDiv.classList.add('d-flex');
-    formNode.append(flexDiv);
     const productInfo = products.find((p) => p.id == productField.id);
-    product(productInfo).forEach((el) => flexDiv.append(el));
+    product(productInfo).forEach((el) => formNode.append(el));
   }
 }
 
@@ -41,21 +49,20 @@ const validate = (value, rule) => {
 };
 
 registerButton.onclick = function onSubmit(event) {
-  const name = document.getElementById('name').value;
+  /* const name = document.getElementById('name').value;
   const surname = document.getElementById('surname').value;
   const email = document.getElementById('email').value;
-  const address = document.getElementById('address').value;
-  const fields = {
+  const address = document.getElementById('address').value; */
+  /* const fields = {
     name,
     surname,
     email,
     address,
-  };
+  }; */
 
   const checkboxes = document.querySelectorAll(
     'input[type="checkbox"]:checked'
   );
-  console.log(checkboxes);
   const total = Array.from(checkboxes).reduce((acc, el) => {
     const productId = el.id;
     const product = products.find((p) => p.id == productId);
