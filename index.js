@@ -11,11 +11,20 @@ const formData = {
   surname: '',
   email: '',
   address: '',
-};
+  products: [],
+},
 
-const onChange = (id, value) => {
+function onTextChange(id, value) {
   formData[id] = value;
-};
+  console.log(formData);
+}
+
+function onProductChange(product){
+  if(!formData.products.find(el => el.id == formData.products.id)){
+    return formData.products.filter(item => item.id != el.id)
+  }
+  return [formData.products, product]
+}
 
 for (const element of config) {
   const { title, description, field } = element;
@@ -25,62 +34,50 @@ for (const element of config) {
 
   const textFields = element.fields.filter((el) => el.type == 'text');
   for (const textField of textFields) {
-    text(textField).forEach((el) => formNode.append(el));
+    text(textField, onTextChange).forEach((el) => formNode.append(el));
   }
 
   const productFields = element.fields.filter((el) => el.type == 'product');
 
   for (const productField of productFields) {
     const productInfo = products.find((p) => p.id == productField.id);
-    product(productInfo).forEach((el) => formNode.append(el));
+    product(productInfo, onProductChange).forEach((el) => formNode.append(el));
   }
 }
 
-const validate = (value, rule) => {
+/* const validate = (value, rule) => {
   if (!rule) return true;
 
   if (rule.required && !value) return false;
 
-  if (rule.min && (!value || value.lenght < rule.min)) return false;
+  if (rule.min && (!values || value.lenght < rule.min)) return false;
 
-  if (rule.includes && (!value || !value.includes(rule.includes))) return false;
+  if (rule.includes && (!value || !value.includes(rule.includes)))
+    return false;
 
   return true;
-};
+}; */
 
-registerButton.onclick = function onSubmit(event) {
-  /* const name = document.getElementById('name').value;
-  const surname = document.getElementById('surname').value;
-  const email = document.getElementById('email').value;
-  const address = document.getElementById('address').value; */
-  /* const fields = {
-    name,
-    surname,
-    email,
-    address,
-  }; */
+registerButton.onclick = function onSubmit() {
 
-  const checkboxes = document.querySelectorAll(
-    'input[type="checkbox"]:checked'
-  );
-  const total = Array.from(checkboxes).reduce((acc, el) => {
+    const total = Array.from(formData.products).reduce((acc, el) => {
     const productId = el.id;
     const product = products.find((p) => p.id == productId);
     return acc + product.price;
-  }, 0);
+  }, 0); 
 
-  for (const validationRule of validationRules) {
-    const isValid = validate(fields[validationRule[0]], validationRule[1]);
+  /*   for (const validationRule of validationRules) {
+    const isValid = validate(formData[validationRule[0]], validationRule[1]);
     if (!isValid) {
       alert(`Il campo ${validationRule[0]} è invalido`);
       return;
     }
-  }
+  } */
 
   alert(`
-  name: ${name}
-  surname: ${surname}
-  email: ${email}
-  address: ${address}
+  name: ${formData.name}
+  surname: ${formData.surname}
+  email: ${formData.email}
+  address: ${formData.address}
   Total order: ${total.toFixed(2)}`);
 };

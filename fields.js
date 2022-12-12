@@ -9,23 +9,28 @@ const createSection = (section) => {
   return [titleEl, paragEl];
 };
 
-const createTextField = (textField, onChange) => {
-  const inputTitle = document.createElement('p');
+const createTextField = (textField, onTextChange) => {
+  const inputTitle = document.createElement('label');
   const inputElement = document.createElement('INPUT');
   inputTitle.textContent = textField.label;
-  console.log(textField);
+  inputElement.onchange = (e) => {
+    onTextChange(textField.id, e.target.value);
+  };
   inputElement.setAttribute('id', textField.id);
   return [inputTitle, inputElement];
 };
 
-const createProductField = (product, onClick) => {
+const createProductField = (product, onProductChange) => {
   const checkElement = document.createElement('INPUT');
   checkElement.setAttribute('id', product.id);
   checkElement.setAttribute('type', 'checkbox');
-  const productTitle = document.createElement('p');
+  const productTitle = document.createElement('label');
   const productPrice = document.createElement('p');
   productTitle.textContent = product.title;
   productPrice.textContent = '€' + product.price.toFixed(2);
+  checkElement.onchange = (e) => {
+    onProductChange(checkElement, e.target.value);
+  };
   return [productTitle, checkElement, productPrice];
 };
 
