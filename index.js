@@ -18,8 +18,10 @@ function onTextChange(id, value) {
   formData[id] = value;
 }
 
+console.log(formData.products)
 function onProductChange(product){
-  if(formData.products.find(p => p.id == formData.products.id)) return formData.products.filter(el => el.id != p.id)
+  if (formData.products.find(p => p.id == formData.products.id)) console.log( product.filter(el => el.id != p.id))
+  console.log(formData.products)
   return formData.products.push(product)
 }
 
@@ -50,9 +52,9 @@ registerButton.onclick = function onSubmit() {
   }, 0); 
   
   const validate = (value, rule) => {
+    console.log('value', value , "rule ", rule)
    if (!rule) return true;
-  
-   if (rule.required && !value) return false;
+   if (rule.required && !value)  return false;
   
    if (rule.min && (!value || value.lenght < rule.min)) return false;
   
@@ -61,7 +63,7 @@ registerButton.onclick = function onSubmit() {
   
    return true;
   }; 
-  
+
    for (const validationRule of validationRules) {
    const isValid = validate(formData[validationRule[0]], validationRule[1]);
    if (!isValid) {
