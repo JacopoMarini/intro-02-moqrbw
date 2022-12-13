@@ -3,6 +3,7 @@ const createSection = (section) => {
   const titleEl = document.createElement('h3');
   const paragEl = document.createElement('p');
   sectionEl.append(titleEl, paragEl);
+  sectionEl.classList.add('d-flex');
   titleEl.textContent = section.title;
   paragEl.textContent = section.description;
 
@@ -21,17 +22,30 @@ const createTextField = (textField, onTextChange) => {
 };
 
 const createProductField = (product, onProductChange) => {
-  const checkElement = document.createElement('INPUT');
-  checkElement.setAttribute('id', product.id);
-  checkElement.setAttribute('type', 'checkbox');
+  const flexCont = document.createElement('div');
+  const checkBoxWrapper = document.createElement('div');
+  const checkElement = document.createElement('input');
   const productTitle = document.createElement('label');
   const productPrice = document.createElement('p');
+
+  flexCont.classList.add('d-flex');
+  checkElement.setAttribute('id', product.id);
+  checkElement.setAttribute('type', 'checkbox');
+  checkBoxWrapper.classList.add('flex');
+
   productTitle.textContent = product.title;
   productPrice.textContent = '€' + product.price.toFixed(2);
   checkElement.onchange = (e) => {
     onProductChange(product.id, e.target.value);
   };
-  return [productTitle, checkElement, productPrice];
+
+  checkBoxWrapper.appendChild(productTitle);
+  checkBoxWrapper.appendChild(checkElement);
+
+  flexCont.appendChild(checkBoxWrapper);
+  flexCont.appendChild(productPrice);
+
+  return [flexCont];
 };
 
 export const fieldsMap = {
