@@ -13,6 +13,7 @@ const createSection = (section) => {
 const createTextField = (textField, onTextChange) => {
   const inputTitle = document.createElement('label');
   const inputElement = document.createElement('INPUT');
+  inputElement.setAttribute('type', 'text');
   inputTitle.textContent = textField.label;
   inputElement.onchange = (e) => {
     onTextChange(textField.id, e.target.value);
