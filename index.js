@@ -67,7 +67,7 @@ registerButton.onclick = function onSubmit() {
    for (const validationRule of validationRules) {
    const isValid = validate(formData[validationRule[0]], validationRule[1]);
    if (!isValid) {
-     alert(`Il campo ${validationRule[0]} è invalido`);
+     alert(` ${validationRule[0]} is invalid`);
      return;
    }
   } 
